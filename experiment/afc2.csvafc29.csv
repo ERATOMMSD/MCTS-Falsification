@@ -1,0 +1,4 @@
+filename;phi_str;algorithm;hill_climbing_by;controlpoints;scalar;partitions_1;partitions_2;T_playout;N_max;falsified_at_all;total_time;falsified_in_preprocessing;time_for_preprocessing;falsified_after_preprocessing;time_for_postpreprocessing
+20180307_1_Input-Values_Synthesized_Non_incrementally_afc29_3_0.05_3_5_20_simulannealbnd_15;alw_[49,50](rms_[t] < 0.05);20180307_1_Input-Values_Synthesized_Non_incrementally;simulannealbnd;3;0.05;3;5;15;20;10;10.6510449;10;10.6510449;10;0.0
+20180307_1_Input-Values_Synthesized_Non_incrementally_afc29_3_0.2_3_5_20_global_nelder_mead_5;alw_[49,50](rms_[t] < 0.05);20180307_1_Input-Values_Synthesized_Non_incrementally;global_nelder_mead;3;0.2;3;5;5;20;10;5.4032266;10;5.4032266;10;0.0
+20180307_1_Input-Values_Synthesized_Non_incrementally_afc29_3_0.2_3_5_40_cmaes_15;alw_[49,50](rms_[t] < 0.05);20180307_1_Input-Values_Synthesized_Non_incrementally;cmaes;3;0.2;3;5;15;40;10;5.1848328;10;5.1848328;10;0.0

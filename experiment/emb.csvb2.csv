@@ -1,0 +1,3 @@
+filename;phi_str;algorithm;hill_climbing_by;controlpoints;scalar;partitions_1;partitions_2;T_playout;N_max;falsified_at_all;total_time;falsified_in_preprocessing;time_for_preprocessing;falsified_after_preprocessing;time_for_postpreprocessing
+20180307_1_Input-Values_Synthesized_Non_incrementally_b2_3_0.2_3_5_20_global_nelder_mead_5;alw_[0,1](not(brake_request[t] == 0) or ev_[0,0.02](F[t] < 150));20180307_1_Input-Values_Synthesized_Non_incrementally;global_nelder_mead;3;0.2;3;5;5;20;0;-1;0;-1;0;-1
+20180307_1_Input-Values_Synthesized_Non_incrementally_b2_3_0.2_3_5_40_cmaes_15;alw_[0,1](not(brake_request[t] == 0) or ev_[0,0.02](F[t] < 150));20180307_1_Input-Values_Synthesized_Non_incrementally;cmaes;3;0.2;3;5;15;40;0;-1;0;-1;0;-1
