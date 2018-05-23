@@ -1,13 +1,13 @@
 This tool is based on Breach (https://github.com/decyphir/breach).
 
 
-#Requirements:
+# Requirements:
 Matlab can be called from commandline. (Add Matlab path to the system PATH).
 Python 2.7.
 
 
 
-#Install and Run:
+# Install and Run:
 1. Install Breach following https://github.com/decyphir/breach;
 
 2. set environment variable 'FALHOME=[path]', [path] is the tool path, e.g., /home/zhenya/FalSTAR/ (note: ending with '/' !!);
@@ -25,13 +25,13 @@ Python 2.7.
 8. cd ., run 'make'
 
 
-#Output:
+# Output:
 Table in .csv, including 
 filename, property, algorithm, optimization solver, control points, hyper-parameters
 falsification result, time consumption, (falsified during preprocessing and time, falsified after preprocessing and time).
 
 
-#Configuration:
+# Configuration:
 format is like:
 "
  block1
