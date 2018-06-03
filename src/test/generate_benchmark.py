@@ -49,7 +49,7 @@ with open('./'+sys.argv[1],'r') as conf:
             elif arg == 'scalar':
 		scalar.append(float(argu[0]))
             elif arg == 'partitions':
-		partitions.append([int(argu[0]),int(argu[1])])
+		partitions.append(map(int,argu))
             elif arg == 'T_playout':
 		T_playout.append(int(argu[0]))
             elif arg == 'N_max':
@@ -136,6 +136,7 @@ for ph in phi_str:
 				bm.write('time_for_preprocessing = [];\n')
 				bm.write('falsified_after_preprocessing = [];\n')
 				bm.write('time_for_postpreprocessing = [];\n')
+				bm.write('best_robustness = [];\n')
 				bm.write('trials = 10;\n')
 				bm.write('for i = 1:trials\n')
 				bm.write('\t tic\n')
@@ -172,9 +173,11 @@ for ph in phi_str:
 				bm.write('\t\t\t time_for_postpreprocessing = [time_for_postpreprocessing; falsif_pb.time_spent];\n')
 				bm.write('\t\t\t falsified_after_preprocessing = [falsified_after_preprocessing;0];\n')
 				bm.write('\t\t end\n')
+				bm.write('\t\tbest_robustness = [best_robustness;falsif_pb.obj_best];\n')
 				bm.write('\t else\n')
 				bm.write('\t\t falsified_after_preprocessing = [falsified_after_preprocessing; 1];\n')
 				bm.write('\t\t time_for_postpreprocessing = [time_for_postpreprocessing; 0];\n')
+				bm.write('\t\t best_robustness = [best_robustness;m.root_node.reward];\n')
 				bm.write('\t end\n')
 				bm.write('end\n')
 				bm.write('falsified_at_all = falsified_after_preprocessing;\n')
@@ -200,7 +203,7 @@ for ph in phi_str:
 				bm.write('partitions = [partitions(1)*ones(trials,1) partitions(2)*ones(trials,1)];\n') #not generalized
 				bm.write('T_playout = T_playout*ones(trials,1);\n')
 				bm.write('N_max = N_max*ones(trials,1);\n')
-				bm.write('result = table(filename, phi_str, algorithm, hill_climbing_by, controlpoints, scalar, partitions, T_playout, N_max, falsified_at_all, total_time, falsified_in_preprocessing, time_for_preprocessing, falsified_after_preprocessing, time_for_postpreprocessing);\n')
+				bm.write('result = table(filename, phi_str, algorithm, hill_climbing_by, controlpoints, scalar, partitions, T_playout, N_max, falsified_at_all, total_time, best_robustness, falsified_in_preprocessing, time_for_preprocessing, falsified_after_preprocessing, time_for_postpreprocessing);\n')
 				bm.write('writetable(result,\'$csv\',\'Delimiter\',\';\');\n')
 				bm.write('quit\n')
 				bm.write('EOF\n')
