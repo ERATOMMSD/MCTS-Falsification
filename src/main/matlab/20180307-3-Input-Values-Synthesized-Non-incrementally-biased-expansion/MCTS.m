@@ -1,12 +1,12 @@
 classdef MCTS < handle
    properties
-       Br
-       max_value
+       Br             %the name of model
+       max_value      %
        budget
-       scalar
-       phi
-       T
-       total_stage
+       scalar         %scalar to balance exploration and exploitation
+       phi            %property to falsify
+       T              %total time
+       total_stage    %total stages
        
        solver
        time_out
@@ -100,7 +100,7 @@ classdef MCTS < handle
             for k = 1:budget
                 
                 this.uctsearch(this.root_node);
-                
+                time = toc;
                 if this.stop == 1
                     break;
                 end
@@ -134,8 +134,8 @@ classdef MCTS < handle
                     this.stop = 1;
                 end
                 
-                %this.plottree();
-                %pause(1);
+                this.plottree();
+                pause(1);
             end
             
             
@@ -193,20 +193,14 @@ classdef MCTS < handle
        
        function backup(this, node, reward)
            
-           if reward < this.root_node.reward
+           if reward < this.root_node.reward %to record the best region
                 this.best_children_range = node.state.input_region;
            end
            
            while true
-                
-               
-               
-                
                 if reward < node.reward
                     node.reward = reward;
                 end
-                
-                
                 if node.state.stage == 1
                     break;
                 else

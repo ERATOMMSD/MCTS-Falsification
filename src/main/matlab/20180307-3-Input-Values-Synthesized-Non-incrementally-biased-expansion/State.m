@@ -4,9 +4,9 @@ classdef State<handle
        input_region
        stage
        
-       total_children_list
-       children_list
-       children_remove_list
+       total_children_list    %all children
+       children_list          %not yet expanded children
+       children_remove_list   %already expanded children
        
        input_name
        input_range
@@ -22,7 +22,6 @@ classdef State<handle
    
    methods
        function this = State(st, ir, cl, in, inrange, ts, unit)
-           
            this.stage = st;
            this.input_region = ir;
            
@@ -35,8 +34,6 @@ classdef State<handle
            this.signal_dimen = numel(in);
            this.total_stage = ts;
            this.signal_unit = unit;
-           
-           
        end
        
        
@@ -99,44 +96,62 @@ classdef State<handle
            small_reg = this.children_list(i);
            
            
-           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% only work for 2d signal
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% only work for 2d
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% signal; 18.05.28 fix
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% this bug
            
-           b_lb = [small_reg.get_bound(1,1); small_reg.get_bound(2,1)];
-           b_rb = [small_reg.get_bound(1,2); small_reg.get_bound(2,2)];
+           
+           b_lb = [];
+           b_rb = [];
+           for u = 1: this.signal_dimen
+               b_lb = [b_lb;small_reg.get_bound(u,1)];
+               b_rb = [b_rb;small_reg.get_bound(u,2)];
+           end
            lb = b_lb;
            rb = b_rb;
            
-           
+           margin = this.signal_unit/10;
            for k = 1:this.signal_dimen
                while true
-                   lb(k) = lb(k) - this.signal_unit(k);
-                   if lb(k) < this.input_range(k,1) || this.contain([lb rb])
+                   
+                   if abs(lb(k) - this.input_range(k,1)) < margin % reach the bound of the region
+                       break;
+                   elseif this.contain([lb rb], margin) %already expanded child is contained in the region
+                   %    lb(k) = lb(k)+ this.signal_unit(k);
                        break;
                    end
+                   lb(k) = lb(k) - this.signal_unit(k);
                end
-               lb(k) = lb(k)+ this.signal_unit(k);
+               
                 
                while true
-                   rb(k) = rb(k) + this.signal_unit(k);
-                   if rb(k) > this.input_range(k,2) || this.contain([lb rb])
+                   
+                   if abs(rb(k) - this.input_range(k,2)) < margin % reach the bound of the region
+                       break;
+                   elseif this.contain([lb rb], margin)  %already expanded child is contained in the region
+                  %     rb(k) = rb(k) - this.signal_unit(k);
                        break;
                    end
+                   rb(k) = rb(k) + this.signal_unit(k);
                end
-               rb(k) = rb(k) - this.signal_unit(k);
+               
            end
            result_reg = [lb rb];
            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            
        end
        
-       function yes = contain(this,reg)
+       function yes = contain(this,reg, margin) %the margin is not 0 but a reasonable range.
            
            yes = false;
+           par_region = Region(reg);
            
            for r = this.children_remove_list
                
-               if r.get_bound(1,1)-reg(1,1)>-1&&r.get_bound(1,2)-reg(1,2)<=1&& r.get_bound(2,1)-reg(2,1)>=-1&&r.get_bound(2,2)-reg(2,2)<=1
+             %  if r.get_bound(1,1)-reg(1,1)>-1&&r.get_bound(1,2)-reg(1,2)<=1&& r.get_bound(2,1)-reg(2,1)>=-1&&r.get_bound(2,2)-reg(2,2)<=1
+               if par_region.contains(r, margin) 
                    yes = true;
+                   
                    break;
                end
            end
