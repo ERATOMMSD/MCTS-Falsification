@@ -100,7 +100,7 @@ classdef MCTS < handle
             for k = 1:budget
                 
                 this.uctsearch(this.root_node);
-                time = toc;
+%                time = toc;
                 if this.stop == 1
                     break;
                 end
@@ -134,8 +134,8 @@ classdef MCTS < handle
                     this.stop = 1;
                 end
                 
-                this.plottree();
-                pause(1);
+%                this.plottree();
+%                pause(1);
             end
             
             
