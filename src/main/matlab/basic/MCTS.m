@@ -1,39 +1,47 @@
- classdef MCTS<handle
-    properties
-        Br
-        
-        max_value
+%%This class includes the main function of Monte-Carlo Tree Search. 
+%
+%The main function can be triggered in the last line of the constructor, so
+%just instantiate this class if you want to run MCTS.
+%
+%
 
-      
+%%
+classdef MCTS < handle
+    properties
+        Br %the Simulink model
         
-        budget
-        scalar
+        max_value %the largest (worst) robustness over all the nodes
+
+        budget %an integer indicating how many times the high-level loop will be accessed
+        scalar %a real number to balance the exploration and explanation
         
-        phi
-        T
-        total_stage
+        phi % the STL formula
+        T % the time bound of a simulation (not timeout)
+        total_stage %the number of stages (= control points)
         
-        solver
-        time_out
+        solver % the hill-climbing optimization solver in MCTS
+        time_out % the timeout for playout
         
-        input_name
-        input_range
-        div
+        input_name %the name of the input signals
+        input_range %the range of the input signal values
+        div % how to discretize (partition) the input space
         
+         
+        child_num % the number of children
+        falsified % a boolean indicating whether the falsification is successful
         
-        child_num
-        falsified
+        root_node % the root node
+         
         
-        root_node
-        front_node
-        
-        best_children_range
+        best_children_range % the sequence of sub-regions with the best robustness value
         
     end
     
    
-    
+ %%   
     methods
+        
+        %the constructor of MCTS
         function this = MCTS(br, budget, scalar, phi, T, ts, solver, time_out, input_name, input_range, div)
             this.max_value = 0;
             this.Br = br;
@@ -98,11 +106,17 @@
             this.falsified = 0;
             this.best_children_range = [Region([])];
             
-            root_state = State(0,[], children_list, input_name,input_range,ts);
+            root_state = State(0,[], children_list, input_name,input_range,ts); %see the constructor of State
             this.root_node = Node(root_state, NaN, this.child_num);
             this.uctsearch(this.root_node);
         end
         
+        
+        %%
+        % the whole process of MCTS, including tree_policy, default_policy
+        % and backup
+        % input: root node
+     
         function uctsearch(this, node)
             
             for k = 1:this.budget
@@ -117,12 +131,18 @@
                     break;
                 end
                 this.backup(front, reward);
-                %this.plottree();
-                %pause(1);
+                
+                %this.plottree(); %for debugging
+                %pause(1); 
             end
             
         end
+        %%
         
+        %tree_policy: the policy to pick a node.
+        %either expand a new node or pick a best child according to UCB1
+        %input: root node
+        %output: the picked node
         function front = tree_policy(this, node)
             while node.state.terminal() == false
                 
@@ -131,12 +151,15 @@
                     return;
                 else
                     node = this.best_child(node);
-                    node
+                    
                 end
             end
             front = node;
         end
-        
+        %%
+        %auxiliary function for tree_policy to expand a new child
+        %input: a node
+        %output: the new generated child
         function child = expand(this,node)
             
             s = node.state.next_state_tp();
@@ -144,6 +167,11 @@
             node.add_child(child);
         end
         
+        %%
+        %auxiliary function for tree_policy to pick a best child
+        %this function is based on UCB1
+        %input: a node
+        %output: the best child of the node according to UCB1
         function child = best_child(this,node)
             best_score = -1;
             best_children = [];
@@ -168,7 +196,10 @@
             end
             
         end
-        
+        %%
+        %default_policy: how to compute a reward for a node
+        %input: a node
+        %output: the reward of this node
         function reward = default_policy(this,node)
             
             state = node.state;
@@ -180,7 +211,12 @@
         end
         
         
-        
+        %%
+        % backup: trace back from the leaf to the root, and update the
+        % visit times and
+        % robustness with the newly computed one if it is better than the
+        % existent ones. 
+        % also update the best_children_range if needed
         function backup(this, node, reward)
             
             if reward < this.root_node.reward
@@ -203,7 +239,10 @@
                 end
             end
         end
-        
+        %%
+        % this function is called when activating the calling in uctsearch,
+        % this function is used for debugging, to see the shape of the
+        % tree.
         function plottree(this)
             queue = CQueue();
             queue.push(this.root_node);
