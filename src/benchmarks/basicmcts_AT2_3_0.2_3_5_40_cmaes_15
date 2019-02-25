@@ -2,8 +2,8 @@
 csv=$1
 matlab -nodesktop -nosplash <<EOF
 clear;
-addpath /home/zhenya/falsification/falsification/src/main/matlab/basic/
-addpath /home/zhenya/falsification/falsification/src/model/benchmark_ARCH19/transmission/
+addpath /home/zhenya/MCTS-Falsification/src/main/matlab/basic/
+addpath /home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/transmission/
 InitFalsification;
 InitBreach;
 
