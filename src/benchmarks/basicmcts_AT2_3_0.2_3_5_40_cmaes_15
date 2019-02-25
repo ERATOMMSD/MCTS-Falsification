@@ -2,8 +2,9 @@
 csv=$1
 matlab -nodesktop -nosplash <<EOF
 clear;
-addpath /home/zhenya/MCTS-Falsification/src/main/matlab/basic/
-addpath /home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/transmission/
+addpath(genpath('/home/zhenya/MCTS-Falsification/src/main/matlab/basic/'));
+addpath(genpath('/home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/transmission/'));
+addpath(genpath('/home/zhenya/breach/'));
 InitFalsification;
 InitBreach;
 

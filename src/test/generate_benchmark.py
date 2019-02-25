@@ -24,6 +24,7 @@ addpath = []
 
 trials = 10
 fal_home = os.environ['FALHOME']
+br_home = os.environ['BRHOME']
 
 with open('./'+sys.argv[1],'r') as conf:
     for line in conf.readlines():
@@ -92,8 +93,9 @@ for ph in phi_str:
                                 bm.write('csv=$1\n')
                                 bm.write('matlab -nodesktop -nosplash <<EOF\n')
                                 bm.write('clear;\n')
-				for ap in addpath: 
-                                    bm.write('addpath '+ ap +'\n')
+				for ap in addpath:
+					bm.write('addpath(genpath(\'' + ap + '\'));\n')
+				bm.write('addpath(genpath(\'' + br_home + '\'));\n')
 				if loadfile!='':
 				    bm.write('load '+loadfile + '\n')
                                 bm.write('InitFalsification;\n')

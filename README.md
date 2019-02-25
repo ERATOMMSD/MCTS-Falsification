@@ -12,15 +12,15 @@ Python 2.7.
 
 2. set environment variable 'FALHOME=[path]', [path] is the tool path, e.g., /home/zhenya/FalSTAR/ (note: ending with '/' !!);
 
-3. put Simulink model at src/model. The model is required to be a successfully compiled one;
+3. set environment variable 'BRHOME=[path]', [path] is breach's path.
 
-4. write a configuration file following Configuration section below and put it (not necessarily) in src/test/config.
+4. put Simulink model at src/model. The model is required to be a successfully compiled one;
 
-5. cd src/test, run 'python generate_benchmark.py [configuration file]'
+5. write a configuration file following Configuration section below and put it (not necessarily) in src/test/config.
 
-6. cd src/benchmarks, run 'chmod 744 *'
+6. cd src/test, run 'python generate_benchmark.py [configuration file]'
 
-7. cd ., open InitFalsification.m, modify the path of Breach
+7. cd src/benchmarks, run 'chmod 744 *'
 
 8. cd ., run 'make'
 
