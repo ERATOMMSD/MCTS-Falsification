@@ -1,0 +1,24 @@
+Simplified Wind Turbine
+----------------------
+
+Description:
+    Hybrid Modelling of a Wind Turbine, ?
+    Simone Schuler, Fabiano Daher Adegas,
+    and Adolfo Anta, ARCH 2016
+
+Initialization (MATLAB variables):
+
+See run_staliro.m
+
+Inputs:
+
+    piecewise linear with a control point in every 5 second
+        8.0 <= wind speed <= 16.0
+
+Requirement (time horizon: 630)
+
+    1. always_[30, 630] BladePitchAngle_Deg <= 14.2
+    2. always_[30, 630] 21000 <= Omega_gen_rpm <= 47500
+    3. always_[30, 630] Omega_rpm <= 14.3
+    4. always_[30, 630](possibly_[0,5]
+        |BladePitchAngle_Deg - Theta_d_deg| <= 1.6)
