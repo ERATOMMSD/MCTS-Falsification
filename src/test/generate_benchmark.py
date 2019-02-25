@@ -98,7 +98,6 @@ for ph in phi_str:
 				bm.write('addpath(genpath(\'' + br_home + '\'));\n')
 				if loadfile!='':
 				    bm.write('load '+loadfile + '\n')
-                                bm.write('InitFalsification;\n')
                                 bm.write('InitBreach;\n\n')
 				bm.write(param+ '\n')
                                 bm.write('mdl = \''+ model + '\';\n')
