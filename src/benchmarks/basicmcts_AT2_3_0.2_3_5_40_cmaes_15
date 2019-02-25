@@ -2,8 +2,8 @@
 csv=$1
 matlab -nodesktop -nosplash <<EOF
 clear;
-addpath /home/zhenya/falsification/falsificationsrc/main/matlab/20180307_1_Input-Values_Synthesized_Non_incrementally
-addpath /home/zhenya/falsification/falsificationsrc/model/benchmark_ARCH19/transmission
+addpath /home/zhenya/falsification/falsification/src/main/matlab/basic/
+addpath /home/zhenya/falsification/falsification/src/model/benchmark_ARCH19/transmission/
 InitFalsification;
 InitBreach;
 
@@ -22,8 +22,8 @@ T_playout = 15;
 input_name = {'throttle','brake'};
 input_range = [[0.0 100.0];[0.0 350.0]];
 partitions = [3 5];
-filename = '20180307_1_Input-Values_Synthesized_Non_incrementally_AT2_3_0.2_3_5_40_cmaes_15';
-algorithm = '20180307_1_Input-Values_Synthesized_Non_incrementally';
+filename = 'basicmcts_AT2_3_0.2_3_5_40_cmaes_15';
+algorithm = 'basicmcts';
 falsified_at_all = [];
 total_time = [];
 falsified_in_preprocessing = [];
