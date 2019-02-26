@@ -1,0 +1,11 @@
+filename;phi_str;algorithm;hill_climbing_by;controlpoints;scalar;partitions_1;partitions_2;T_playout;N_max;falsified_at_all;total_time;best_robustness;falsified_in_preprocessing;time_for_preprocessing;falsified_after_preprocessing;time_for_postpreprocessing
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;926.716889;0.0866723564631258;0;626.360111;0;300.356778
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;925.604714;0.152879824864769;0;625.333126;0;300.271588
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;924.963701;2.11914410239756;0;624.635047;0;300.328654
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;925.970158;2.54271002122579;0;625.759685;0;300.210473
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;926.383454;0.618980836460508;0;626.212454;0;300.171
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;923.324653;0.244350035715087;0;623.280461;0;300.044192
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;923.792898;0.593652048811506;0;623.755316;0;300.037582
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;925.360642;0.864333467003021;0;625.040041;0;300.320601
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;0;923.860087;3.19643797878871;0;623.655263;0;300.204824
+mctsbasic_AT1_5_0.2_3_5_40_cmaes_15;alw_[0,20] (speed[t] < 120);mctsbasic;cmaes;5;0.2;3;5;15;40;1;896.624559;-0.0147892182186666;0;622.850853;1;273.773706

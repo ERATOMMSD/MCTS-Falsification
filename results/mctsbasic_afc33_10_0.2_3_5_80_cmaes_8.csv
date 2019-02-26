@@ -1,0 +1,11 @@
+filename;phi_str;algorithm;hill_climbing_by;controlpoints;scalar;partitions_1;partitions_2;T_playout;N_max;falsified_at_all;total_time;best_robustness;falsified_in_preprocessing;time_for_preprocessing;falsified_after_preprocessing;time_for_postpreprocessing
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;6.710556;-0.0312877970557434;1;6.710556;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.702116;-0.0203873692710644;1;5.702116;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.889965;-0.0150088214464207;1;5.889965;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.419312;-0.0221630531993647;1;5.419312;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.563405;-0.0300473869306749;1;5.563405;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.465265;-0.0252619144693239;1;5.465265;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.533105;-0.0341556389414176;1;5.533105;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.518749;-0.00957602091683497;1;5.518749;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.597294;-0.0153137988349245;1;5.597294;1;0
+mctsbasic_afc33_10_0.2_3_5_80_cmaes_8;alw_[11.0, 50.0] (mu[t] < 0.007 and mu[t] > -0.007);mctsbasic;cmaes;10;0.2;3;5;8;80;1;5.56542;-0.0123699178930604;1;5.56542;1;0

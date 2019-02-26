@@ -1,0 +1,11 @@
+filename;phi_str;algorithm;hill_climbing_by;controlpoints;scalar;partitions_1;partitions_2;T_playout;N_max;falsified_at_all;total_time;best_robustness;falsified_in_preprocessing;time_for_preprocessing;falsified_after_preprocessing;time_for_postpreprocessing
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;125.220765;-3.80328846560819;1;125.220765;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;48.934728;-0.368553950995739;1;48.934728;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;464.129025;-5.50068213182726;1;464.129025;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;225.639386;-2.11638709035928;1;225.639386;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;199.600096;-2.70743203410227;1;199.600096;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;75.270297;-0.905985467000484;1;75.270297;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;69.94636;-3.78597183968427;1;69.94636;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;140.490687;-2.48865669104161;1;140.490687;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;2.192813;-0.383431502106163;1;2.192813;1;0
+mctsbasic_AT6b_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 8.0] (speed[t] < 50.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;41.49192;-1.42230379673567;1;41.49192;1;0

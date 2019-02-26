@@ -1,0 +1,11 @@
+filename;phi_str;algorithm;hill_climbing_by;controlpoints;scalar;partitions_1;partitions_2;T_playout;N_max;falsified_at_all;total_time;best_robustness;falsified_in_preprocessing;time_for_preprocessing;falsified_after_preprocessing;time_for_postpreprocessing
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;9.568857;-22.2062152185081;1;9.568857;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;4.456351;-9.58711523426064;1;4.456351;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;4.037451;-5.82546136059864;1;4.037451;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;6.635661;-9.90430436903443;1;6.635661;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;2.641573;-20.1954973553866;1;2.641573;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;28.465062;-15.1875368713654;1;28.465062;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;6.876657;-22.0338229275467;1;6.876657;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;4.536753;-14.9464693693362;1;4.536753;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;13.431795;-2.54742108824576;1;13.431795;1;0
+basicmcts_AT2_3_0.2_3_5_40_cmaes_15;alw_[0, 10](RPM[t] < 4750.0);basicmcts;cmaes;3;0.2;3;5;15;40;1;8.094866;-0.777713164263332;1;8.094866;1;0

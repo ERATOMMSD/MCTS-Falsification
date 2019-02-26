@@ -1,0 +1,11 @@
+filename;phi_str;algorithm;hill_climbing_by;controlpoints;scalar;partitions_1;partitions_2;T_playout;N_max;falsified_at_all;total_time;best_robustness;falsified_in_preprocessing;time_for_preprocessing;falsified_after_preprocessing;time_for_postpreprocessing
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;118.380577;-0.784460110378696;1;118.380577;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;5.356182;-2.61205045306915;1;5.356182;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;23.599523;-3.42985319532544;1;23.599523;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;69.006271;-1.63422073735452;1;69.006271;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;44.732083;-0.991801314843556;1;44.732083;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;99.611122;-3.96733836975958;1;99.611122;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;37.551594;-1.97923145242219;1;37.551594;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;25.951636;-0.465591589176917;1;25.951636;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;46.614303;-2.10105961972283;1;46.614303;1;0
+mctsbasic_AT6a_5_0.2_3_5_40_cmaes_15;(alw_[0.0, 30.0] (RPM[t] < 3000.0) => alw_[0.0, 4.0] (speed[t] < 35.0));mctsbasic;cmaes;5;0.2;3;5;15;40;1;11.307645;-1.62281356749867;1;11.307645;1;0
