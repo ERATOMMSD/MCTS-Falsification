@@ -7,7 +7,7 @@ addpath(genpath('/home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/neur
 addpath(genpath('/home/zhenya/breach/'));
 InitBreach;
 
-u_ts
+u_ts=0.001;
 mdl = 'narmamaglev_v1';
 Br = BreachSimulinkSystem(mdl);
 br = Br.copy();
