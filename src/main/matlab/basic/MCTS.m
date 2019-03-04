@@ -103,6 +103,7 @@ classdef MCTS < handle
             end
             
             this.child_num = prod(div);
+			this.simulations = 0;
             
             this.falsified = 0;
             this.best_children_range = [Region([])];
@@ -122,16 +123,16 @@ classdef MCTS < handle
             
             for k = 1:this.budget
                 front = this.tree_policy(node);
-                reward = this.default_policy(front);
+                [reward, sim] = this.default_policy(front);
                 if reward > this.max_value
                     this.max_value = reward;
                 end
                 if reward < 0
                     this.falsified = 1;
-                    this.backup(front,reward);
+                    this.backup(front,reward, sim);
                     break;
                 end
-                this.backup(front, reward);
+                this.backup(front, reward, sim);
                 
                 %this.plottree(); %for debugging
                 %pause(1); 
@@ -201,13 +202,13 @@ classdef MCTS < handle
         %default_policy: how to compute a reward for a node
         %input: a node
         %output: the reward of this node
-        function reward = default_policy(this,node)
+        function [reward, sim] = default_policy(this,node)
             
             state = node.state;
             while state.terminal() == false
                 state = state.next_state_dp();
             end
-            reward = state.reward(this.Br.copy(), this.T, this.phi, this.solver, this.time_out);
+            [reward, sim] = state.reward(this.Br.copy(), this.T, this.phi, this.solver, this.time_out);
             
         end
         
@@ -218,13 +219,12 @@ classdef MCTS < handle
         % robustness with the newly computed one if it is better than the
         % existent ones. 
         % also update the best_children_range if needed
-        function backup(this, node, reward)
+        function backup(this, node, reward, sim)
             
             if reward < this.root_node.reward
                 this.best_children_range = node.state.input_region;
             end
-
-			this.simulations = this.simulations + node.state.simulations;
+			this.simulations = this.simulations + sim;
             
             while true
                 node.visit = node.visit+1;

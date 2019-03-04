@@ -22,7 +22,7 @@ T = ''
 loadfile = ''
 addpath = []
 
-trials = 10
+trials = 20
 fal_home = os.environ['FALHOME']
 br_home = os.environ['BRHOME']
 
@@ -141,7 +141,7 @@ for ph in phi_str:
 				bm.write('simulation_pre = [];\n')
 				bm.write('simulation_after = [];\n')
 				bm.write('simulations = [];\n')
-				bm.write('trials = 10;\n')
+				bm.write('trials =' + str(trials)+';\n')
 				bm.write('for i = 1:trials\n')
 				bm.write('\t tic\n')
 				bm.write('\t m = MCTS(br, N_max, scalar, phi, T, controlpoints, hill_climbing_by, T_playout, input_name, input_range, partitions);\n')
