@@ -7,6 +7,41 @@ addpath(genpath('/home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/wind
 addpath(genpath('/home/zhenya/breach/'));
 InitBreach;
 
+SimplifiedTurbine_Config;
+%/Users/zhenya/git/MCTS-Falsification/src/model/benchmark_ARCH19/wind-turbine/
+addpath('/home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/wind-turbine/tools/')
+addpath('/home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/wind-turbine/wind/')
+addpath(config.wafo_path)
+
+load('ClassA.mat')
+load('ClassA_config.mat')
+
+load('aeromaps3.mat');
+Parameter.InitialConditions = load('InitialConditions');
+% remove all unnecessary fields (otherwise Simulink will throw an error)
+cT_modelrm = rmfield(cT_model,{'VarNames'});%,'RMSE','ParameterVar','ParameterStd','R2','AdjustedR2'});
+cP_modelrm = rmfield(cP_model,{'VarNames'});%,'RMSE','ParameterVar','ParameterStd','R2','AdjustedR2'});
+
+% initialize WAFO
+initwafo 
+
+iBin = find(URefVector==Parameter.URef);
+iRandSeed = 1;
+
+config.iBin                         = iBin;
+config.iRandSeed                    = iRandSeed;
+Parameter.v0                        = v0_cell{iBin,iRandSeed};
+Parameter.v0.signals.values         = Parameter.v0.signals.values';
+Parameter.TMax                      = v0_cell{iBin,iRandSeed}.time(end);
+config.WindFieldName                = FileNames{iBin,iRandSeed};
+% Time
+Parameter.Time.TMax                 = 630;              % [s]       duration of simulation
+Parameter.Time.dt                   = 0.01;           % [s]       time step of simulation
+Parameter.Time.cut_in               = 30;
+Parameter.Time.cut_out              = Parameter.Time.TMax;
+Parameter.v0_0 = Parameter.v0.signals.values(1);
+
+Parameter = SimplifiedTurbine_ParamterFile(Parameter);
 
 mdl = 'SimplifiedWTModelFALS';
 Br = BreachSimulinkSystem(mdl);
