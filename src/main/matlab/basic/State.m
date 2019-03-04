@@ -83,7 +83,7 @@ classdef State<handle
            
            falsif_pb = FalsificationProblem(br, phi);
            falsif_pb.setup_solver(solver);
-           falsif_pb.max_time = time_out;
+           falsif_pb.max_obj_eval = time_out;
            falsif_pb.solve();
            n = falsif_pb.nb_obj_eval; 
            r = falsif_pb.obj_best;
