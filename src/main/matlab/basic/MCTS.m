@@ -35,6 +35,7 @@ classdef MCTS < handle
         
         best_children_range % the sequence of sub-regions with the best robustness value
         
+		simulations 
     end
     
    
@@ -222,6 +223,8 @@ classdef MCTS < handle
             if reward < this.root_node.reward
                 this.best_children_range = node.state.input_region;
             end
+
+			this.simulations = this.simulations + node.state.simulations;
             
             while true
                 node.visit = node.visit+1;

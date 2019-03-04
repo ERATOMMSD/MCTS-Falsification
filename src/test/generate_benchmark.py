@@ -76,7 +76,7 @@ with open('./'+sys.argv[1],'r') as conf:
 	    if linenum == 0:
 		status = 0
 
-
+print partitions
 for ph in phi_str:
     for cp in controlpoints:
         for c in scalar:
@@ -138,6 +138,9 @@ for ph in phi_str:
 				bm.write('falsified_after_preprocessing = [];\n')
 				bm.write('time_for_postpreprocessing = [];\n')
 				bm.write('best_robustness = [];\n')
+				bm.write('simulation_pre = [];\n')
+				bm.write('simulation_after = [];\n')
+				bm.write('simulations = [];\n')
 				bm.write('trials = 10;\n')
 				bm.write('for i = 1:trials\n')
 				bm.write('\t tic\n')
@@ -145,6 +148,7 @@ for ph in phi_str:
 				bm.write('\t falsified_in_preprocessing = [falsified_in_preprocessing; m.falsified];\n')
 				bm.write('\t time = toc;\n')
 				bm.write('\t time_for_preprocessing = [time_for_preprocessing; time];\n')
+				bm.write('\t simulation_pre = [simulation_pre;m.simulations];\n')
 				bm.write('\t if m.falsified == 0\n')
 				bm.write('\t\t BR = Br.copy();\n')
 				bm.write('\t\t BR.Sys.tspan = '+ timespan +';\n')
@@ -174,15 +178,18 @@ for ph in phi_str:
 				bm.write('\t\t\t time_for_postpreprocessing = [time_for_postpreprocessing; falsif_pb.time_spent];\n')
 				bm.write('\t\t\t falsified_after_preprocessing = [falsified_after_preprocessing;0];\n')
 				bm.write('\t\t end\n')
+				bm.write('\t\tsimulation_after =[simulation_after;falsif_pb.nb_obj_eval];\n')
 				bm.write('\t\tbest_robustness = [best_robustness;falsif_pb.obj_best];\n')
 				bm.write('\t else\n')
 				bm.write('\t\t falsified_after_preprocessing = [falsified_after_preprocessing; 1];\n')
 				bm.write('\t\t time_for_postpreprocessing = [time_for_postpreprocessing; 0];\n')
 				bm.write('\t\t best_robustness = [best_robustness;m.root_node.reward];\n')
+				bm.write('\t\t simulation_after = [simulation_after;0];\n')
 				bm.write('\t end\n')
 				bm.write('end\n')
 				bm.write('falsified_at_all = falsified_after_preprocessing;\n')
 				bm.write('total_time = time_for_preprocessing + time_for_postpreprocessing;\n')
+				bm.write('simulations = simulation_pre + simulation_after;\n')
 				bm.write('phi_str = {phi_str')
 				for j in range(1,trials):
 				    bm.write(';phi_str')
@@ -201,10 +208,14 @@ for ph in phi_str:
                                 bm.write('};\n')
 				bm.write('controlpoints = controlpoints*ones(trials,1);\n')
 				bm.write('scalar = scalar*ones(trials,1);\n')
-				bm.write('partitions = [partitions(1)*ones(trials,1) partitions(2)*ones(trials,1)];\n') #not generalized
+				#bm.write('partitions = [partitions(1)*ones(trials,1) partitions(2)*ones(trials,1)];\n') #not generalized
+				bm.write('partis = [];\n')
+				bm.write('for u = 1:numel(partitions)\n')
+				bm.write('\tpartis = [partis partitions(u)*ones(trials,1)];\n')
+				bm.write('end\n')
 				bm.write('T_playout = T_playout*ones(trials,1);\n')
 				bm.write('N_max = N_max*ones(trials,1);\n')
-				bm.write('result = table(filename, phi_str, algorithm, hill_climbing_by, controlpoints, scalar, partitions, T_playout, N_max, falsified_at_all, total_time, best_robustness, falsified_in_preprocessing, time_for_preprocessing, falsified_after_preprocessing, time_for_postpreprocessing);\n')
+				bm.write('result = table(filename, phi_str, algorithm, hill_climbing_by, controlpoints, scalar, partis, T_playout, N_max, falsified_at_all, total_time, simulations, best_robustness, falsified_in_preprocessing, time_for_preprocessing, falsified_after_preprocessing, time_for_postpreprocessing);\n')
 				bm.write('writetable(result,\'$csv\',\'Delimiter\',\';\');\n')
 				bm.write('quit\n')
 				bm.write('EOF\n')

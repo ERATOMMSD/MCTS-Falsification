@@ -19,6 +19,7 @@ classdef State<handle
        input_range % input signal value's range, same to the property in MCTS
        signal_dimen % the dimension of the input signal
        total_stage %the number of stages, a static integer
+	   simulations
    end
    %%
    % the constructor
@@ -85,7 +86,7 @@ classdef State<handle
            falsif_pb.setup_solver(solver);
            falsif_pb.max_time = time_out;
            falsif_pb.solve();
-           
+           this.simulations = falsif_pb.nb_obj_eval;
            
            r = falsif_pb.obj_best;
        end
