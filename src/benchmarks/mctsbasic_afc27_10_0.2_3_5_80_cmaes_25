@@ -103,5 +103,5 @@ T_playout = T_playout*ones(trials,1);
 N_max = N_max*ones(trials,1);
 result = table(filename, phi_str, algorithm, hill_climbing_by, controlpoints, scalar, partis, T_playout, N_max, falsified_at_all, total_time, simulations, best_robustness, falsified_in_preprocessing, time_for_preprocessing, falsified_after_preprocessing, time_for_postpreprocessing);
 writetable(result,'$csv','Delimiter',';');
-quit
+save_system(mdl+'_breach',false);
 EOF
