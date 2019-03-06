@@ -8,7 +8,7 @@ addpath(genpath('/home/zhenya/breach/'));
 InitBreach;
 
 
-mdl = 'Autotrans_shift';
+mdl = 'Autotrans_shift_ARCH';
 Br = BreachSimulinkSystem(mdl);
 br = Br.copy();
 N_max =40;

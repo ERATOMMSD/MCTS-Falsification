@@ -8,7 +8,7 @@ addpath(genpath('/home/zhenya/breach/'));
 InitBreach;
 
 u_ts=0.001;
-mdl = 'narmamaglev_v1';
+mdl = 'narmamaglev_v1_ARCH';
 Br = BreachSimulinkSystem(mdl);
 br = Br.copy();
 N_max =40;
