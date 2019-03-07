@@ -15,7 +15,7 @@ N_max =40;
 scalar = 0.2;
 phi_str = 'alw_[0,20] (speed[t] < 120)';
 phi = STL_Formula('phi1',phi_str);
-T = 20;
+T = 30;
 controlpoints = 5;
 hill_climbing_by = 'cmaes';
 T_playout = 45;
@@ -44,7 +44,7 @@ for i = 1:trials
 	 simulation_pre = [simulation_pre;m.simulations];
 	 if m.falsified == 0
 		 BR = Br.copy();
-		 BR.Sys.tspan = 0:.01:20;
+		 BR.Sys.tspan = 0:.01:30;
 		 input_gen.type = 'UniStep';
 		 input_gen.cp = controlpoints;
 		 BR.SetInputGen(input_gen);

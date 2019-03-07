@@ -2,8 +2,8 @@
 csv=$1
 matlab -nodesktop -nosplash <<EOF
 clear;
-addpath(genpath('/home/zhenya/MCTS-Falsification/src/main/matlab/basic/'));
-addpath(genpath('/home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/transmission/'));
+addpath(genpath('/home/zhenya/MCTS-Falsification/src/main/matlab/basic'));
+addpath(genpath('/home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/transmission'));
 addpath(genpath('/home/zhenya/breach/'));
 InitBreach;
 
@@ -15,15 +15,15 @@ N_max =40;
 scalar = 0.2;
 phi_str = 'alw_[0, 10](RPM[t] < 4750.0)';
 phi = STL_Formula('phi1',phi_str);
-T = 10;
-controlpoints = 3;
+T = 30;
+controlpoints = 5;
 hill_climbing_by = 'cmaes';
 T_playout = 45;
 input_name = {'throttle','brake'};
 input_range = [[0.0 100.0];[0.0 350.0]];
 partitions = [3 5];
-filename = 'basicmcts_AT2_3_0.2_3_5_40_cmaes_45';
-algorithm = 'basicmcts';
+filename = 'mctsbasic_AT2_5_0.2_3_5_40_cmaes_45';
+algorithm = 'mctsbasic';
 falsified_at_all = [];
 total_time = [];
 falsified_in_preprocessing = [];
@@ -44,7 +44,7 @@ for i = 1:trials
 	 simulation_pre = [simulation_pre;m.simulations];
 	 if m.falsified == 0
 		 BR = Br.copy();
-		 BR.Sys.tspan = 0:.01:10;
+		 BR.Sys.tspan = 0:.01:30;
 		 input_gen.type = 'UniStep';
 		 input_gen.cp = controlpoints;
 		 BR.SetInputGen(input_gen);
