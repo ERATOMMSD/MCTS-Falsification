@@ -1,5 +1,5 @@
 Model {
-  Name			  "Autotrans_shift_ARCH"
+  Name			  "Autotrans_shift"
   Version		  9.2
   SavedCharacterEncoding  "UTF-8"
   GraphicalInterface {
@@ -40,19 +40,19 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.279"
+    ComputedModelVersion    "1.278"
     NumModelReferences	    0
     NumTestPointedSignals   4
     TestPointedSignal {
       SignalName	      "ImprellerTorque"
-      FullBlockPath	      "Autotrans_shift_ARCH/Transmission"
+      FullBlockPath	      "Autotrans_shift/Transmission"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      "OutputTorque"
-      FullBlockPath	      "Autotrans_shift_ARCH/Transmission"
+      FullBlockPath	      "Autotrans_shift/Transmission"
       PortIndex		      2
       LogSignal		      1
       MaxPoints		      5000
@@ -60,11 +60,11 @@ Model {
     }
     TestPointedSignal {
       SignalName	      "VehicleSpeed"
-      FullBlockPath	      "Autotrans_shift_ARCH/Vehicle"
+      FullBlockPath	      "Autotrans_shift/Vehicle"
     }
     TestPointedSignal {
       SignalName	      "TransmissionRPM"
-      FullBlockPath	      "Autotrans_shift_ARCH/Vehicle"
+      FullBlockPath	      "Autotrans_shift/Vehicle"
       PortIndex		      2
     }
     NumProvidedFunctions    0
@@ -78,11 +78,11 @@ Model {
     NumExternalFileReferences 0
     OrderedModelArguments   1
   }
+  LogicAnalyzerPlugin	  "on"
   WebScopes_FoundationPlugin "on"
   DiagnosticSuppressor	  "on"
-  SLCCPlugin		  "on"
   NotesPlugin		  "on"
-  LogicAnalyzerPlugin	  "on"
+  SLCCPlugin		  "on"
   Description		  "Modeling an Automatic Transmission Controller \n\nIn this example, Simulink(R) is used to model an a"
   "utomotive drivetrain. Stateflow(R)\nenhances the Simulink model with its representation of the transmission\ncontrol"
   " logic. Simulink provides a powerful environment for the modeling and\nsimulation of dynamic systems and processes. "
@@ -101,7 +101,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "maci64"
+  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -111,7 +111,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [0.0, 0.0, 1440.0, 900.0]
+      Location		      [0.0, 21.0, 1920.0, 1059.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -135,9 +135,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1402.0, 724.0]
-	ZoomFactor		[1.7499999999999998]
-	Offset			[-84.42862369609918, 31.128591105863507]
+	Extents			[1880.0, 905.0]
+	ZoomFactor		[1.75]
+	Offset			[-84.428623696099109, 31.128591105863507]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -155,12 +155,12 @@ Model {
       }
       WindowState	      "AAAA/wAAAAD9AAAAAgAAAAAAAAC9AAAB+PwCAAAAA/sAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAA"
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
-      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABrAP///wAAAAEAAAAAAAAAAPwCA"
+      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABiAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAWgAAADDwAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAd+AAADyAAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
-      "////wEAAACE/////wAAAAAAAAAA/////wEAAAD2/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAF6/////wAAAAAAAAAA/"
-      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAOh/////wAAAAAAAAAA/"
+      "////wEAAACA/////wAAAAAAAAAA/////wEAAADo/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAFo/////wAAAAAAAAAA/"
+      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAANR/////wAAAAAAAAAA/"
       "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA"
     }
   }
@@ -169,11 +169,11 @@ Model {
   Creator		  "The MathWorks Inc."
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "zhenya"
+  LastModifiedBy	  "gernst@unimelb.edu.au"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Mar 06 11:34:25 2019"
-  RTWModifiedTimeStamp	  473772860
-  ModelVersionFormat	  "1.%<AutoIncrement:279>"
+  LastModifiedDate	  "Mon Feb 18 17:43:05 2019"
+  RTWModifiedTimeStamp	  472412218
+  ModelVersionFormat	  "1.%<AutoIncrement:278>"
   SampleTimeColors	  on
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -230,11 +230,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "Autotrans_shift_ARCH"
+    model_		    "Autotrans_shift"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "Autotrans_shift_ARCH"
+      Cell		      "Autotrans_shift"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -358,8 +358,8 @@ Model {
 	  RelTol		  "1e-3"
 	  EnableMultiTasking	  off
 	  ConcurrentTasks	  off
-	  Solver		  "VariableStepAuto"
-	  SolverName		  "VariableStepAuto"
+	  Solver		  "ode5"
+	  SolverName		  "ode5"
 	  SolverJacobianMethodControl "auto"
 	  ShapePreserveControl	  "DisableAll"
 	  ZeroCrossControl	  "UseLocalSettings"
@@ -1028,8 +1028,8 @@ Model {
       }
       Name		      "Configuration"
       ExtraOptions	      ""
-      CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    [ 71, 71, 1371, 831 ]
+      CurrentDlgPage	      "Data Import//Export"
+      ConfigPrmDlgPosition    [ -1, 20, 1779, 960 ]
     }
     PropName		    "ConfigurationSets"
   }
@@ -1344,8 +1344,8 @@ Model {
     }
   }
   System {
-    Name		    "Autotrans_shift_ARCH"
-    Location		    [0, 0, 1440, 900]
+    Name		    "Autotrans_shift"
+    Location		    [0, 21, 1920, 1080]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1657,7 +1657,7 @@ Model {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
 	  SID			  "16::34"
-	  Tag			  "Stateflow S-Function Autotrans_shift_ARCH 1"
+	  Tag			  "Stateflow S-Function Autotrans_shift 1"
 	  Ports			  [3, 2]
 	  Position		  [180, 100, 230, 180]
 	  ZOrder		  7
@@ -3091,7 +3091,7 @@ Model {
     Annotation {
       SID		      "122"
       Name		      "Modeling an Automatic Transmission Controller"
-      Position		      [222, 48, 600, 71]
+      Position		      [222, 48, 634, 71]
       InternalMargins	      [0, 0, 0, 0]
       ZOrder		      -1
       FontName		      "Arial"
@@ -3108,7 +3108,7 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "Autotrans_shift_ARCH"
+    name		    "Autotrans_shift"
     isLibrary		    0
     debug {
       runTimeCheck	      [0 0 0]
