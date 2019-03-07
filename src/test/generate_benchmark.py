@@ -217,5 +217,5 @@ for ph in phi_str:
 				bm.write('N_max = N_max*ones(trials,1);\n')
 				bm.write('result = table(filename, phi_str, algorithm, hill_climbing_by, controlpoints, scalar, partis, T_playout, N_max, falsified_at_all, total_time, simulations, best_robustness, falsified_in_preprocessing, time_for_preprocessing, falsified_after_preprocessing, time_for_postpreprocessing);\n')
 				bm.write('writetable(result,\'$csv\',\'Delimiter\',\';\');\n')
-				bm.write('quit\n')
+				bm.write('save_system(mdl+\'_breach\',false);\n')
 				bm.write('EOF\n')
