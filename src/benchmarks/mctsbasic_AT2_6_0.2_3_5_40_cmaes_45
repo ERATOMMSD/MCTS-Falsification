@@ -1,0 +1,101 @@
+#!/bin/sh
+csv=$1
+matlab -nodesktop -nosplash <<EOF
+clear;
+addpath(genpath('/home/zhenya/MCTS-Falsification/src/main/matlab/basic'));
+addpath(genpath('/home/zhenya/MCTS-Falsification/src/model/benchmark_ARCH19/transmission'));
+addpath(genpath('/home/zhenya/breach/'));
+InitBreach;
+
+
+mdl = 'Autotrans_shift_ARCH';
+Br = BreachSimulinkSystem(mdl);
+br = Br.copy();
+N_max =40;
+scalar = 0.2;
+phi_str = 'alw_[0, 10](RPM[t] < 4750.0)';
+phi = STL_Formula('phi1',phi_str);
+T = 30;
+controlpoints = 6;
+hill_climbing_by = 'cmaes';
+T_playout = 45;
+input_name = {'throttle','brake'};
+input_range = [[0.0 100.0];[0.0 350.0]];
+partitions = [3 5];
+filename = 'mctsbasic_AT2_6_0.2_3_5_40_cmaes_45';
+algorithm = 'mctsbasic';
+falsified_at_all = [];
+total_time = [];
+falsified_in_preprocessing = [];
+time_for_preprocessing = [];
+falsified_after_preprocessing = [];
+time_for_postpreprocessing = [];
+best_robustness = [];
+simulation_pre = [];
+simulation_after = [];
+simulations = [];
+trials =20;
+for i = 1:trials
+	 tic
+	 m = MCTS(br, N_max, scalar, phi, T, controlpoints, hill_climbing_by, T_playout, input_name, input_range, partitions);
+	 falsified_in_preprocessing = [falsified_in_preprocessing; m.falsified];
+	 time = toc;
+	 time_for_preprocessing = [time_for_preprocessing; time];
+	 simulation_pre = [simulation_pre;m.simulations];
+	 if m.falsified == 0
+		 BR = Br.copy();
+		 BR.Sys.tspan = 0:.01:30;
+		 input_gen.type = 'UniStep';
+		 input_gen.cp = controlpoints;
+		 BR.SetInputGen(input_gen);
+		 range = m.best_children_range;
+		 r = numel(range);
+		 for cpi = 1:controlpoints
+			 for k = 1:numel(input_name)
+				 sig_name = strcat(input_name(k), '_u', num2str(cpi-1));
+				 if cpi <= r
+					 BR.SetParamRanges({sig_name},range(cpi).get_signal(k));
+				 else
+					 BR.SetParamRanges({sig_name},input_range(k,:));
+				 end
+			 end
+		 end
+		 falsif_pb = FalsificationProblem(BR, phi);
+		 falsif_pb.max_time = 300;
+		 falsif_pb.setup_solver('cmaes');
+		 falsif_pb.solve();
+		 if falsif_pb.obj_best < 0
+			 time_for_postpreprocessing = [time_for_postpreprocessing; falsif_pb.time_spent];
+			 falsified_after_preprocessing = [falsified_after_preprocessing; 1];
+		 else
+			 time_for_postpreprocessing = [time_for_postpreprocessing; falsif_pb.time_spent];
+			 falsified_after_preprocessing = [falsified_after_preprocessing;0];
+		 end
+		simulation_after =[simulation_after;falsif_pb.nb_obj_eval];
+		best_robustness = [best_robustness;falsif_pb.obj_best];
+	 else
+		 falsified_after_preprocessing = [falsified_after_preprocessing; 1];
+		 time_for_postpreprocessing = [time_for_postpreprocessing; 0];
+		 best_robustness = [best_robustness;m.root_node.reward];
+		 simulation_after = [simulation_after;0];
+	 end
+end
+falsified_at_all = falsified_after_preprocessing;
+total_time = time_for_preprocessing + time_for_postpreprocessing;
+simulations = simulation_pre + simulation_after;
+phi_str = {phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str};
+algorithm = {algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm};
+hill_climbing_by = {hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by};
+filename = {filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename};
+controlpoints = controlpoints*ones(trials,1);
+scalar = scalar*ones(trials,1);
+partis = [];
+for u = 1:numel(partitions)
+	partis = [partis partitions(u)*ones(trials,1)];
+end
+T_playout = T_playout*ones(trials,1);
+N_max = N_max*ones(trials,1);
+result = table(filename, phi_str, algorithm, hill_climbing_by, controlpoints, scalar, partis, T_playout, N_max, falsified_at_all, total_time, simulations, best_robustness, falsified_in_preprocessing, time_for_preprocessing, falsified_after_preprocessing, time_for_postpreprocessing);
+writetable(result,'$csv','Delimiter',';');
+save_system(mdl+'_breach',false);
+EOF
