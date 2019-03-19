@@ -34,7 +34,7 @@ best_robustness = [];
 simulation_pre = [];
 simulation_after = [];
 simulations = [];
-trials =20;
+trials =5;
 for i = 1:trials
 	 tic
 	 m = MCTS(br, N_max, scalar, phi, T, controlpoints, hill_climbing_by, T_playout, input_name, input_range, partitions);
@@ -83,10 +83,10 @@ end
 falsified_at_all = falsified_after_preprocessing;
 total_time = time_for_preprocessing + time_for_postpreprocessing;
 simulations = simulation_pre + simulation_after;
-phi_str = {phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str;phi_str};
-algorithm = {algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm;algorithm};
-hill_climbing_by = {hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by};
-filename = {filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename;filename};
+phi_str = {phi_str;phi_str;phi_str;phi_str;phi_str};
+algorithm = {algorithm;algorithm;algorithm;algorithm;algorithm};
+hill_climbing_by = {hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by;hill_climbing_by};
+filename = {filename;filename;filename;filename;filename};
 controlpoints = controlpoints*ones(trials,1);
 scalar = scalar*ones(trials,1);
 partis = [];
