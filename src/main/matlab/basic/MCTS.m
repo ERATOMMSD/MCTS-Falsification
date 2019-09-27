@@ -37,6 +37,8 @@ classdef MCTS < handle
         
 		simulations 
         
+        log
+        
     end
     
    
@@ -44,7 +46,7 @@ classdef MCTS < handle
     methods
         
         %the constructor of MCTS
-        function this = MCTS(br, budget, scalar, phi, T, ts, solver, time_out, input_name, input_range, div)
+        function this = MCTS(br, budget, scalar, phi, T, ts, solver, time_out, input_name, input_range, div )
             this.max_value = 0;
             this.Br = br;
             this.budget = budget;
@@ -111,7 +113,12 @@ classdef MCTS < handle
             
             root_state = State(0,[], children_list, input_name,input_range,ts); %see the constructor of State
             this.root_node = Node(root_state, NaN, this.child_num);
+            this.log = [];
+            this.log.X_log = [];
+            this.log.obj_log = [];
             this.uctsearch(this.root_node);
+            
+            
         end
         
         
@@ -122,18 +129,27 @@ classdef MCTS < handle
      
         function uctsearch(this, node)
             
-            for k = 1:this.budget
+            %for k = 1:this.budget
+            while true
                 front = this.tree_policy(node);
-                [reward, sim] = this.default_policy(front);
+                [reward, sim, plog] = this.default_policy(front);
+                
                 if reward > this.max_value
                     this.max_value = reward;
                 end
+                this.log.X_log = [this.log.X_log plog.X_log];
+                this.log.obj_log = [this.log.obj_log plog.obj_log];
+                
+                    
                 if reward < 0
                     this.falsified = 1;
                     this.backup(front,reward, sim);
                     break;
                 end
                 this.backup(front, reward, sim);
+                if numel(this.log.obj_log) > this.budget
+                    break;
+                end
                 
                 %this.plottree(); %for debugging
                 %pause(1); 
@@ -203,13 +219,13 @@ classdef MCTS < handle
         %default_policy: how to compute a reward for a node
         %input: a node
         %output: the reward of this node
-        function [reward, sim] = default_policy(this,node)
+        function [reward, sim, log] = default_policy(this,node)
             
             state = node.state;
             while state.terminal() == false
                 state = state.next_state_dp();
             end
-            [reward, sim] = state.reward(this.Br.copy(), this.T, this.phi, this.solver, this.time_out);
+            [reward, sim, log] = state.reward(this.Br.copy(), this.T, this.phi, this.solver, this.time_out);
             
         end
         
@@ -272,6 +288,7 @@ classdef MCTS < handle
                 node_id = node_id + 1;
                 
             end
+            
             
             my_treeplot(nodes);
             

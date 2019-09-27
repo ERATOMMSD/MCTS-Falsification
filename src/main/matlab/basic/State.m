@@ -68,7 +68,7 @@ classdef State<handle
        % hill-climbing. this function just follows a regular way to call
        % Breach.
        %
-       function [r,n] = reward(this, br, T, phi, solver, time_out)
+       function [r,n, l] = reward(this, br, T, phi, solver, time_out)
            br.Sys.tspan = 0:.01:T;
            input_gen.type = 'UniStep';
            input_gen.cp = this.total_stage;
@@ -87,6 +87,10 @@ classdef State<handle
            falsif_pb.solve();
            n = falsif_pb.nb_obj_eval; 
            r = falsif_pb.obj_best;
+           l = [];
+           l.X_log = falsif_pb.X_log;
+           l.obj_log = falsif_pb.obj_log;
+           
        end
 
        %%
